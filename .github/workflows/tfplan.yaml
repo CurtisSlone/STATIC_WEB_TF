@@ -22,5 +22,10 @@ jobs:
             -   name: Terraform plan
                 uses: azurenoops/terraform-github-actions/terraform-plan@v1.34.2
                 with:
+                    backend_config: |
+                        backend=azurerm
+                        resource_group_name=${{ AZURE_RG }}
+                        storage_account_name=${{ AZURE_SA }}
+                        container_name=${{ AZURE_SC }}
+                        key=terraform.state
                     path: src
-                    backend_config: 
