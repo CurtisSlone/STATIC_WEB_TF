@@ -1,8 +1,8 @@
 # **AMPE STATIC WEB APP**
 
 ## Purpose
-Create a workload for an AMPE Public Facing Website 
+Create AMPE Public facing Website
 
 ## Phase
 
-Testing Phase
+Testing

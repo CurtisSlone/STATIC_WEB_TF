@@ -23,3 +23,4 @@ jobs:
                 uses: azurenoops/terraform-github-actions/terraform-plan@v1.34.2
                 with:
                     path: src
+                    backend_config: 
