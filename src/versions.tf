@@ -10,6 +10,10 @@ terraform {
         version = "~> 1.0.4"
     }
   }
+backend "azurerm" {
+  
+}
+
   # backend "azurerm" {
   #   resource_group_name = "ampe-eastus2-network-artifacts-dev-rg"
   #   storage_account_name = "ampetfstatesarjuprr8y"
