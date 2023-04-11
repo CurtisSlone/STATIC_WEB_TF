@@ -1,11 +1,11 @@
 # **AMPE STATIC WEB APP**
 
 ## Purpose
-Create AMPE Public facing Website
+Create AMPE Public facing Website.
 
 ## Phase
 
-Testing Phase
+Testing Phase.
 
 ## Current Error
 
