@@ -23,6 +23,7 @@ jobs:
                 uses: azurenoops/terraform-github-actions/terraform-plan@v1.34.2
                 with:
                     path: src
+                    var: terraform-backend=azurerm
                     backend_config: |
                     resource_group_name=${{ secrets.AZURE_RG }}
                     storage_account_name=${{ secrets.AZURE_SA }}
