@@ -13,8 +13,8 @@ terraform {
 
   # backend "azurerm" {
   #   resource_group_name = "ampe-eastus2-network-artifacts-dev-rg"
-  #   storage_account_name = "ampetfstatesafcd3jta2"
-  #   container_name = "ampetfdevscfcd3jta2"
+  #   storage_account_name = "ampetfstatesarjuprr8y"
+  #   container_name = "ampetfdevscrjuprr8y"
   #   key = "terraform.tfstate"
   # }
 }
