@@ -24,8 +24,7 @@ jobs:
                 with:
                     path: src
                     var: terraform-backend=azurerm
-                    backend_config: |
-                    resource_group_name=${{ secrets.AZURE_RG }}
+                    backend_config: resource_group_name=${{ secrets.AZURE_RG }}
                     storage_account_name=${{ secrets.AZURE_SA }}
                     container_name=${{ secrets.AZURE_SC }}
                     key=${{ secrets.AZURE_KEY }}
