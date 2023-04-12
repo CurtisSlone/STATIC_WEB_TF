@@ -15,7 +15,7 @@ resource "azurerm_static_site" "staticapp" {
 #
 
 resource "azurerm_dns_zone" "dnszone" {
-  name = "slonesecurity.com" # Root domain
+  name = "www.slonesecurity.com" # Root domain
   resource_group_name = module.static-web-app.resource_group_name
 }
 
@@ -25,7 +25,7 @@ resource "azurerm_dns_zone" "dnszone" {
 resource "azurerm_dns_cname_record" "name" {
   name = "test"
   zone_name = azurerm_dns_zone.dnszone.name
-  resouresource_group_name = module.static-web-app.resource_group_name
+  resource_group_name = module.static-web-app.resource_group_name
   ttl = 300
   record = "brave-wave-0f630260f.3.azurestaticapps.net"
 }
