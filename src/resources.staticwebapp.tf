@@ -7,4 +7,39 @@ resource "azurerm_static_site" "staticapp" {
   resource_group_name = module.static-web-app.resource_group_name
   location = var.location
   sku_tier = "Standard"
+  sku_size = "Standard"
+}
+
+#
+# Azurerm Static Web Page Custom DNS Zone
+#
+
+resource "azurerm_dns_zone" "dnszone" {
+  name = "www.slonesecurity.com" # Root domain
+  resource_group_name = module.static-web-app.resource_group_name
+}
+
+#
+# AzureRM DNS TXT Record
+#
+# resource "azurerm_dns_txt_record" "domain-verification" {
+#   name = "www.slonesecurity.com"
+#   zone_name = azurerm_dns_zone.dnszone.name
+#   resource_group_name = module.static-web-app.resource_group_name
+#   ttl = 300
+
+#   record {
+#     value = azurerm_static_site.staticapp.default_host_name
+#   }
+# }
+
+#
+# Azurerm Static Web Page Custom DNS CNAME
+#
+resource "azurerm_dns_cname_record" "name" {
+  name = "test"
+  zone_name = azurerm_dns_zone.dnszone.name
+  resource_group_name = module.static-web-app.resource_group_name
+  ttl = 300
+  record = "brave-wave-0f630260f.3.azurestaticapps.net"
 }
