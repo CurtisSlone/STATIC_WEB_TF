@@ -15,26 +15,27 @@ resource "azurerm_static_site" "staticapp" {
 #
 
 resource "azurerm_dns_zone" "dnszone" {
-  name = "www.slonesecurity.com" # Root domain
+  depends_on = [
+    azurerm_static_site.staticapp
+  ]
+  name = "slonesecurity.com" # Root domain
   resource_group_name = module.static-web-app.resource_group_name
 }
 
 #
 # AzureRM DNS TXT Record
 #
-resource "azurerm_dns_txt_record" "domain-verification" {
-  depends_on = [
-    azurerm_static_site.staticapp
-  ]
-  name = "slonesecurity.com"
-  zone_name = azurerm_dns_zone.dnszone.name
-  resource_group_name = module.static-web-app.resource_group_name
-  ttl = 300
+# resource "azurerm_dns_txt_record" "domain-verification" {
+  
+#   name = "slonesecurity.com"
+#   zone_name = azurerm_dns_zone.dnszone.name
+#   resource_group_name = module.static-web-app.resource_group_name
+#   ttl = 300
 
-  record {
-    value = azurerm_static_site.staticapp.default_host_name
-  }
-}
+#   record {
+#     value = azurerm_static_site.staticapp.default_host_name
+#   }
+# }
 
 #
 # Azurerm Static Web Page Custom DNS CNAME
