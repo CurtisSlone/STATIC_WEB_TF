@@ -22,24 +22,30 @@ resource "azurerm_dns_zone" "dnszone" {
 #
 # AzureRM DNS TXT Record
 #
-# resource "azurerm_dns_txt_record" "domain-verification" {
-#   name = "www.slonesecurity.com"
-#   zone_name = azurerm_dns_zone.dnszone.name
-#   resource_group_name = module.static-web-app.resource_group_name
-#   ttl = 300
+resource "azurerm_dns_txt_record" "domain-verification" {
+  depends_on = [
+    azurerm_static_site.staticapp
+  ]
+  name = "slonesecurity.com"
+  zone_name = azurerm_dns_zone.dnszone.name
+  resource_group_name = module.static-web-app.resource_group_name
+  ttl = 300
 
-#   record {
-#     value = azurerm_static_site.staticapp.default_host_name
-#   }
-# }
+  record {
+    value = azurerm_static_site.staticapp.default_host_name
+  }
+}
 
 #
 # Azurerm Static Web Page Custom DNS CNAME
 #
 resource "azurerm_dns_cname_record" "name" {
-  name = "test"
+  depends_on = [
+    azurerm_dns_zone.dnszone
+  ]
+  name = "www"
   zone_name = azurerm_dns_zone.dnszone.name
   resource_group_name = module.static-web-app.resource_group_name
   ttl = 300
-  record = "brave-wave-0f630260f.3.azurestaticapps.net"
+  record = azurerm_static_site.staticapp.api_key
 }
