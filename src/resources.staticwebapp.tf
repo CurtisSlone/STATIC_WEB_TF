@@ -3,7 +3,7 @@
 #
 
 resource "azurerm_static_site" "staticapp" {
-  name = "static-web-app"
+  name = var.SWP-Name
   resource_group_name = module.static-web-app.resource_group_name
   location = var.location
   sku_tier = "Standard"
@@ -16,8 +16,8 @@ resource "azurerm_static_site" "staticapp" {
 #
 resource "azurerm_dns_cname_record" "cname" {
 
-  name = "www"
-  zone_name = "slonesecurity.com"
+  name = var.cname_record
+  zone_name = var.zone_name
   resource_group_name = module.static-web-app.resource_group_name
   ttl = 300
   record = azurerm_static_site.staticapp.default_host_name
