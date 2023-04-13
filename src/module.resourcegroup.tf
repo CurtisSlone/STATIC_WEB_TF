@@ -1,5 +1,5 @@
 #
-# Static Web App Resource Group
+# Remote State Resource Group
 #
 
 module "static-web-app" {
